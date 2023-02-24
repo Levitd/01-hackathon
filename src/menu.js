@@ -17,9 +17,19 @@ export class ContextMenu extends Menu {
     open(event) {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
-        console.log('ContextMenu', 'open', mouseX, mouseY, this.root);
-        this.root.style.left = `${mouseX}px`;
-        this.root.style.top = `${mouseY}px`;
+        const countItem = this.root.querySelectorAll('.menu-item').length;
+        console.log('ContextMenu', 'open', mouseX, mouseY, countItem);
+
+        const winWidth = window.innerWidth;
+        const winHeight = window.innerHeight;
+
+        const maxHeight = Math.max(this.root.offsetHeight, countItem * 50);// countItem * 50;
+        const maxWidth = Math.max(this.root.offsetWidth, 150);
+        console.log(maxWidth, maxHeight);
+
+        this.root.style.left = (winWidth - mouseX >= maxWidth + 50) ? `${mouseX}px` : `${mouseX - maxWidth}px`;
+        this.root.style.top = (winHeight - mouseY >= maxHeight + 50) ? `${mouseY}px` : `${mouseY - maxHeight}px`;
+
         this.root.classList.remove('d-none');
     }
 
