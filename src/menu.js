@@ -16,6 +16,7 @@ export class ContextMenu extends Menu {
             this.open(event);
         })
         this.menuObjct = [];
+        this.bindClass;
     }
     click(event) {
         const type = event.target.dataset.type;
@@ -33,7 +34,7 @@ export class ContextMenu extends Menu {
         const winWidth = window.innerWidth;
         const winHeight = window.innerHeight;
 
-        const maxHeight = Math.max(this.root.offsetHeight, countItem * 50);// countItem * 50;
+        const maxHeight = Math.max(this.root.offsetHeight, countItem * 25);// countItem * 50;
         const maxWidth = Math.max(this.root.offsetWidth, 225);
         console.log(maxWidth, maxHeight);
 
@@ -53,29 +54,26 @@ export class ContextMenu extends Menu {
         console.log(elementClick);
         const countClickArrayAll = getStorage(`countClickArrayAll`);
         if (countClickArrayAll) {
+            let index;
             if (elementClick.tagName === 'LI') {
                 const elMenuClick = elementClick.dataset.type;
-                const index = countClickArrayAll.findIndex(e => e.name === elMenuClick);
-                if (index > -1) {
-                    const countClick = countClickArrayAll[index].count;
-                    countClickArrayAll[index].count = countClick + 1;
-                    setStorage(`countClickArrayAll`, countClickArrayAll);
-                }
-            } else if (elementClick.tagName === 'BODY') {
-                const index = countClickArrayAll.findIndex(e => e.name === 'body');
-                if (index > -1) {
-                    const countClick = countClickArrayAll[index].count;
-                    countClickArrayAll[index].count = countClick + 1;
-                    setStorage(`countClickArrayAll`, countClickArrayAll);
-                }
+                index = countClickArrayAll.findIndex(e => e.name === elMenuClick);
+            } else {
+                index = countClickArrayAll.findIndex(e => e.name === 'body');
             }
+            if (index > -1) {
+                const countClick = countClickArrayAll[index].count;
+                countClickArrayAll[index].count = countClick + 1;
+                setStorage(`countClickArrayAll`, countClickArrayAll);
+            }
+
         }
+        this.bindClass();
         const countClickArray = getStorage('countClickArray'); //JSON.parse(localStorage.getItem(`countClickArray`));
         if (countClickArray && Number(countClickArray[0]) === 1) {
             const leftOrRight = (button === 'left') ? 1 : 2;
             countClickArray[leftOrRight] = Number(countClickArray[leftOrRight]) + 1;
             setStorage(`countClickArray`, countClickArray);
-            // localStorage.setItem(`countClickArray`, JSON.stringify(countClickArray));
         }
     }
 
@@ -84,9 +82,11 @@ export class ContextMenu extends Menu {
         const itemITML = type.toHTML();
         this.root.innerHTML = this.root.innerHTML + itemITML;
     };
-    add(type) {
+    add(type, bindClass) {
         if (type instanceof Module)
             this.menuHtml(type);
         this.menuObjct.push({ name: type['type'], type: type, text: type['text'] });
+        if (bindClass)
+            this.bindClass = bindClass;
     }
 };

@@ -19,3 +19,6 @@ export function getStorage(el) {
 export function setStorage(el, array) {
   localStorage.setItem(el, JSON.stringify(array));
 }
+export function getRGBColor() {
+  return `${random(0, 255)},${random(0, 255)},${random(0, 255)}`;
+}

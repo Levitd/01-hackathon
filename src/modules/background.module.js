@@ -1,5 +1,6 @@
 import { Module } from '../core/module'
 import { random } from '../utils';
+import { getRGBColor } from '../utils';
 
 export class BackgroundModule extends Module {
     constructor(type, text, timerMSec) {
@@ -11,15 +12,12 @@ export class BackgroundModule extends Module {
     }
     trigger(event) {
 
-        document.body.style.backgroundColor = `rgb(${this.getRGBColor()})`;
+        document.body.style.backgroundColor = `rgb(${getRGBColor()})`;
         console.log(this.defaultColorBackground)
         const setTtimeoutID = window.setTimeout(this.defaulBackground, this.timerinMiliSec, this.defaultColorBackground);
     }
     defaulBackground(defaulColor) {
         console.log('defaulBackground', defaulColor);
         document.body.style.backgroundColor = defaulColor;
-    }
-    getRGBColor() {
-        return `${random(0, 255)},${random(0, 255)},${random(0, 255)}`;
     }
 }
