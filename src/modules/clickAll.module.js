@@ -71,7 +71,8 @@ export class ClickAllModule extends Module {
                 divEl.classList.add('item_clickAll_visible');
                 divEl.style.height = `${el['count'] * scaleX}px`;
                 const divE2 = document.createElement('div');
-                divE2.textContent = el['text'];
+                const textDivCount = el['text'].indexOf('(');
+                divE2.textContent = (textDivCount > -1) ? el['text'].slice(0, textDivCount) : el['text'];
                 divE2.className = 'item_text';
                 rootEl.append(divE2);
             });
