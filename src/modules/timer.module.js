@@ -4,7 +4,7 @@ export class TimerModule extends Module {
     trigger(){
         let countDown = prompt('Введите колличество секунд:');
 
-        let body = document.querySelector('body');
+        let body = document.querySelector('./body');
         let divTimer = document.createElement('div');
         divTimer.className = 'timer';
     
