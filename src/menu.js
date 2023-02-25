@@ -1,5 +1,7 @@
 import { Menu } from './core/menu'
 import { Module } from './core/module';
+import { getStorage } from './utils';
+import { setStorage } from './utils';
 
 export class ContextMenu extends Menu {
     constructor(selector) {
@@ -10,7 +12,7 @@ export class ContextMenu extends Menu {
 
         document.body.addEventListener('contextmenu', event => {
             event.preventDefault();
-            this.countClick('right');
+            this.countClick('right', event);
             this.open(event);
         })
         this.menuObjct = [];
@@ -46,9 +48,35 @@ export class ContextMenu extends Menu {
         this.root.classList.add('d-none');
     }
 
-    countClick(button) {
-        if (window.timerClickStart[0] === 1)
-            window.timerClickStart[(button === 'left') ? 1 : 2]++;
+    countClick(button, event) {
+        const elementClick = event.target
+        console.log(elementClick);
+        const countClickArrayAll = getStorage(`countClickArrayAll`);
+        if (countClickArrayAll) {
+            if (elementClick.tagName === 'LI') {
+                const elMenuClick = elementClick.dataset.type;
+                const index = countClickArrayAll.findIndex(e => e.name === elMenuClick);
+                if (index > -1) {
+                    const countClick = countClickArrayAll[index].count;
+                    countClickArrayAll[index].count = countClick + 1;
+                    setStorage(`countClickArrayAll`, countClickArrayAll);
+                }
+            } else if (elementClick.tagName === 'BODY') {
+                const index = countClickArrayAll.findIndex(e => e.name === 'body');
+                if (index > -1) {
+                    const countClick = countClickArrayAll[index].count;
+                    countClickArrayAll[index].count = countClick + 1;
+                    setStorage(`countClickArrayAll`, countClickArrayAll);
+                }
+            }
+        }
+        const countClickArray = getStorage('countClickArray'); //JSON.parse(localStorage.getItem(`countClickArray`));
+        if (countClickArray && Number(countClickArray[0]) === 1) {
+            const leftOrRight = (button === 'left') ? 1 : 2;
+            countClickArray[leftOrRight] = Number(countClickArray[leftOrRight]) + 1;
+            setStorage(`countClickArray`, countClickArray);
+            // localStorage.setItem(`countClickArray`, JSON.stringify(countClickArray));
+        }
     }
 
     menuHtml(type) {
