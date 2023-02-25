@@ -87,6 +87,6 @@ export class ContextMenu extends Menu {
     add(type) {
         if (type instanceof Module)
             this.menuHtml(type);
-        this.menuObjct.push({ name: type['type'], type: type });
+        this.menuObjct.push({ name: type['type'], type: type, text: type['text'] });
     }
 };

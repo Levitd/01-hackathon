@@ -6,10 +6,11 @@ export class BackgroundModule extends Module {
         super(type, text);
         this.defaultColorBackground;
         this.timerinMiliSec = timerMSec;
-        this.shapes = ['square', 'triangle', 'triangle']
+        //this.shapes = ['square', 'triangle', 'triangle']
+        this.defaultColorBackground = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
     }
     trigger(event) {
-        this.defaultColorBackground = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
+
         document.body.style.backgroundColor = `rgb(${this.getRGBColor()})`;
         console.log(this.defaultColorBackground)
         const setTtimeoutID = window.setTimeout(this.defaulBackground, this.timerinMiliSec, this.defaultColorBackground);

@@ -28,7 +28,7 @@ contextMenu.add(shapeModule);
 const timerModule = new TimerModule('timerModule', 'Таймер отсчета',);
 contextMenu.add(timerModule);
 
-const clickAllModule = new ClickAllModule('clickAllModule', 'Отобразить статистику', 'Убрать статистику');
+const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');
 contextMenu.add(clickAllModule);
 clickAllModule.initObj(contextMenu);
 
