@@ -94,3 +94,16 @@ body {
     border-top: none;
     transform: rotate(45deg);
   }
+
+/* Custom message styles */
+.custom-block__message{
+    width: 300px;
+    height: 100px;
+    position:absolute;
+    top: 800px;
+    background-color: #343434;
+    color:beige;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}

@@ -7,6 +7,7 @@ import { BackgroundModule } from './modules/background.module';
 import { ClicksModule } from './modules/clicks.module';
 import { ShapeModule } from './modules/shape.module';
 import { TimerModule } from './modules/timer.module';
+import { CustomMessage } from './modules/message.module';
 
 import { ClickAllModule } from './modules/clickAll.module';
 
@@ -27,6 +28,9 @@ contextMenu.add(shapeModule);
 
 const timerModule = new TimerModule('timerModule', 'Таймер отсчета',);
 contextMenu.add(timerModule);
+
+const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
+contextMenu.add(customMessage);
 
 const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');
 contextMenu.add(clickAllModule);
