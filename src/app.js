@@ -29,6 +29,6 @@ const timerModule = new TimerModule('timerModule', 'Таймер отсчета'
 contextMenu.add(timerModule);
 
 const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');
-contextMenu.add(clickAllModule);
+contextMenu.add(clickAllModule, clickAllModule.refresh);
 clickAllModule.initObj(contextMenu);
 
