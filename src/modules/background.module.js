@@ -1,5 +1,4 @@
 import { Module } from '../core/module'
-import { random } from '../utils';
 import { getRGBColor } from '../utils';
 
 export class BackgroundModule extends Module {
