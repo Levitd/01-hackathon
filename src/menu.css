@@ -11,11 +11,12 @@
     padding: 8px 16px;
     font-size: 16px;
     min-width: 100px;
-  }
+}
+
 .button:hover {
     background: #1d49aa;
 }
-  
+
 .button:focus {
     outline: none;
     box-shadow: 0 0 0 4px #cbd6ee;
@@ -23,7 +24,7 @@
 
 .clickAll {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
 }
@@ -52,6 +53,7 @@
     justify-content: center;
     border-radius: 5px;
 }
+
 .countClick {
     color: white;
     background-color: #28a745;
@@ -64,6 +66,3 @@
     margin-left: 5px;
     min-width: 30px;
 }
-
-
-
