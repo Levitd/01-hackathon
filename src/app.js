@@ -1,6 +1,9 @@
 import './styles.css';
 import './menu.css';
 
+window.timerClickStart = [0, 0, 0];
+
+import { numFormat } from './utils';
 import { ContextMenu } from './menu';
 import { BackgroundModule } from './modules/background.module';
 import { ClicksModule } from './modules/clicks.module';
@@ -8,32 +11,17 @@ import { ShapeModule } from './modules/shape.module';
 
 const contextMenu = new ContextMenu('.menu');
 
-const backgroundModule = new BackgroundModule('backgroundModule', 'Случайный фон', backgroundModule);
+const timerBackgroundColor = 2000;
+const addMessageBackground = (timerBackgroundColor > 0) ? ` (${numFormat(timerBackgroundColor / 1000, 0)} сек)` : '';
+const backgroundModule = new BackgroundModule('backgroundModule', `Случайный фон${addMessageBackground}`, timerBackgroundColor);
 contextMenu.add(backgroundModule);
 
-const clicksModule = new ClicksModule('clicksModule', 'Аналитика кликов');
+const timerClickAnalize = 5000;
+const addMessageClick = (timerClickAnalize > 0) ? ` (${numFormat(timerClickAnalize / 1000, 0)} сек)` : '';
+const clicksModule = new ClicksModule('clicksModule', `Аналитика кликов${addMessageClick}`, timerClickAnalize, contextMenu);
 contextMenu.add(clicksModule);
 
 const shapeModule = new ShapeModule('shapeModule', 'Случайная фигура');
 contextMenu.add(shapeModule);
 
-
-const root = document.querySelector('.menu');
-console.log(root);
-root.addEventListener('click', (event) => {
-    const type = event.target.dataset.type;
-    eval(type).trigger();
-    console.log(event, event.target);
-})
-
-
-// const menuObj = [
-//     { type: clicksModule, text: 'Аналитика кликов ' },
-//     { type: shapeModule, text: 'Случайная фигура' },
-//     { type: 3, text: 'Таймер отсчета' },
-//     { type: 4, text: 'Случайный звук' },
-//     { type: backgroundModule, text: 'Случайный фон' },
-//     { type: 6, text: 'Кастомное сообщение' },
-// ]
-//contextMenu.add(menuObj);
 

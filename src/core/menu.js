@@ -3,8 +3,12 @@ export class Menu {
     this.el = document.querySelector(selector)
 
     document.body.addEventListener('click', event => {
+      this.countClick('left');
       if (event.target.offsetParent !== this.el) {
-        this.close()
+        this.close();
+      } else {
+        this.click(event);
+        this.close();
       }
     })
   }
