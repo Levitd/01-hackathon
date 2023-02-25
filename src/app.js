@@ -8,7 +8,7 @@ import { ClicksModule } from './modules/clicks.module';
 import { ShapeModule } from './modules/shape.module';
 import { TimerModule } from './modules/timer.module';
 import { CustomMessage } from './modules/message.module';
-
+import { SoundModule } from './modules/sound.module';
 import { ClickAllModule } from './modules/clickAll.module';
 
 const contextMenu = new ContextMenu('.menu');
@@ -31,6 +31,9 @@ contextMenu.add(timerModule);
 
 const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
 contextMenu.add(customMessage);
+
+const soundModule = new TimerModule('soundModule', 'Случайный звук',);
+contextMenu.add(soundModule);
 
 const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');
 contextMenu.add(clickAllModule, clickAllModule.refresh);
