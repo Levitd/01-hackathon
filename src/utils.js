@@ -8,3 +8,14 @@ export function numFormat(dec, kolDec) {
     maximumFractionDigits: kolDec
   }).format(dec);
 }
+
+export function randomCoordinates(number) {
+  return Math.floor(Math.random() * (number - 120))
+}
+
+export function getStorage(el) {
+  return JSON.parse(localStorage.getItem(el));
+}
+export function setStorage(el, array) {
+  localStorage.setItem(el, JSON.stringify(array));
+}
