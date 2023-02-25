@@ -8,3 +8,7 @@ export function numFormat(dec, kolDec) {
     maximumFractionDigits: kolDec
   }).format(dec);
 }
+
+export function randomCoordinates(number) {
+  return Math.floor(Math.random() * (number - 120))
+}
