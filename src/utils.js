@@ -8,3 +8,9 @@ export function numFormat(dec, kolDec) {
     maximumFractionDigits: kolDec
   }).format(dec);
 }
+export function getStorage(el) {
+  return JSON.parse(localStorage.getItem(el));
+}
+export function setStorage(el, array) {
+  localStorage.setItem(el, JSON.stringify(array));
+}

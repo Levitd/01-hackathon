@@ -10,15 +10,13 @@ export class ClicksModule extends Module {
         console.log(this.contextMenu)
     }
     trigger(event) {
-        window.timerClickStart[0] = 1;
-        console.log(window.timerClickStart, 'timerClickStart');
-
+        localStorage.setItem(`countClickArray`, JSON.stringify([1, 0, 0]));
         const setTtimeoutID = window.setTimeout(this.stopClick, this.timerinMiliSec, this.timerinMiliSec, this.messageClick);
     }
     stopClick(times, callback) {
-        console.log(window.timerClickStart, times);
-        callback(`За ${numFormat(times / 1000, 0)} секунд вы кликнули: ${window.timerClickStart[1]} раз левой и ${window.timerClickStart[2]} раз правой кнопкой мыши.`);
-        window.timerClickStart = [0, 0, 0];
+        const countClickArray = JSON.parse(localStorage.getItem(`countClickArray`));
+        console.log(countClickArray, times);
+        callback(`За ${numFormat(times / 1000, 0)} секунд вы кликнули: ${countClickArray[1]} раз левой и ${countClickArray[2]} раз правой кнопкой мыши.`);
     }
     messageClick(text) {
         console.log(text);
