@@ -49,7 +49,7 @@ export class ClickAllModule extends Module {
         this.getStorage();
         const countElementStatistic = this.storage.length;
         console.log(countElementStatistic);
-        //const
+        //const ce
     }
 
 }
