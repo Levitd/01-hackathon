@@ -1,13 +1,14 @@
 import './styles.css';
 import './menu.css';
 
-window.timerClickStart = [0, 0, 0];
-
 import { numFormat } from './utils';
 import { ContextMenu } from './menu';
 import { BackgroundModule } from './modules/background.module';
 import { ClicksModule } from './modules/clicks.module';
 import { ShapeModule } from './modules/shape.module';
+import { TimerModule } from './modules/timer.module';
+
+import { ClickAllModule } from './modules/clickAll.module';
 
 const contextMenu = new ContextMenu('.menu');
 
@@ -24,4 +25,10 @@ contextMenu.add(clicksModule);
 const shapeModule = new ShapeModule('shapeModule', 'Случайная фигура');
 contextMenu.add(shapeModule);
 
+const timerModule = new TimerModule('timerModule', 'Таймер отсчета',);
+contextMenu.add(timerModule);
+
+const clickAllModule = new ClickAllModule('clickAllModule', 'Отобразить статистику', 'Убрать статистику');
+contextMenu.add(clickAllModule);
+clickAllModule.initObj(contextMenu);
 
