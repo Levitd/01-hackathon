@@ -46,7 +46,7 @@ export class TimerModule extends Module {
             <div class="timer-2">
             <input name="name" class="timer_input" type="number" placeholder="Введите любое число" value="10"
             min="1" max="1500" autofocus>
-            <button type="submit" class="timer_button">Отправить</button>
+            <button type="submit" class="timer_button">Запуск</button>
             </div>
             </form>`;
         }
