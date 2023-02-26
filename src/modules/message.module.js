@@ -9,6 +9,8 @@ export class CustomMessage extends Module {
         this.deleteBlock(3000);
     }
     createBlockMessage(messageAsk) {
+        const conteinerMessage = this.conteinerMessage();
+        const contentMes = conteinerMessage.querySelector('.content_1');
         let blockMessage = document.querySelector(`.custom-block__message`);
         if (blockMessage)
             blockMessage.remove();
@@ -18,7 +20,7 @@ export class CustomMessage extends Module {
         blockText.className = 'custom-text__message';
         blockText.textContent = messageAsk;
         blockMessage.append(blockText);
-        return document.body.append(blockMessage);
+        return contentMes.append(blockMessage);
     }
     deleteBlock(timer) {
         const blockMessage = document.querySelector('.custom-block__message')
@@ -40,5 +42,19 @@ export class CustomMessage extends Module {
 
         let rand = Math.floor(Math.random() * arr.length);
         return arr[rand];
+    }
+    conteinerMessage() {
+        let contMes = document.querySelector('.conteinerMessage');
+        if (!contMes) {
+            contMes = document.createElement('div');
+            contMes.className = 'conteinerMessage';
+            for (let i = 0; i < 2; i++) {
+                const divEl = document.createElement('div');
+                divEl.className = `content_${i}`;
+                contMes.append(divEl);
+            }
+            document.body.append(contMes);
+        }
+        return contMes;
     }
 }

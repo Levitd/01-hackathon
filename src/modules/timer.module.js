@@ -16,12 +16,14 @@ export class TimerModule extends Module {
     }
 
     createElement(newform) {
-        const body = document.querySelector('body');
+        const contein = customMessage.conteinerMessage();
+        const contentMes = contein.querySelector('.content_0');
+        //const body = document.querySelector('body');
         const element = this.createHTML(newform);
 
-        body.insertAdjacentHTML("beforeend", element);
+        contentMes.insertAdjacentHTML("beforeend", element);
         if (newform === 'new') {
-            body.addEventListener('submit', (event) => {
+            contentMes.addEventListener('submit', (event) => {
                 event.preventDefault();
                 const input = document.querySelector('.timer_input')
                 if (input !== '') {
