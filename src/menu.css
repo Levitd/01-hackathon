@@ -1,25 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 .d-none {
     display: none;
-}
-
-.button {
-    appearance: none;
-    border: 1px;
-    border-radius: 5px;
-    background: #4676D7;
-    color: #fff;
-    padding: 8px 16px;
-    font-size: 16px;
-    min-width: 100px;
-}
-
-.button:hover {
-    background: #1d49aa;
-}
-
-.button:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px #cbd6ee;
 }
 
 .clickAll {
@@ -62,7 +43,7 @@
     line-height: 1.5;
     border-radius: 0.25rem;
     transition: color .15s ease-in-out,
-        background-color .15s ease-in-out;
+    background-color .15s ease-in-out;
     margin-left: 5px;
     min-width: 30px;
 }
@@ -71,7 +52,45 @@
     opacity: 0;
     transition: all ease-in-out .5s;
 }
+.timer-block{
+    min-width: 200px;
+    max-width: 300px;
+    min-height: 50px;
+    position: absolute;
+    top: 150px;
+    background-color: #1b1a1a;
+    color: #eee;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+}
+input{
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 0.3rem;
+    background-color: rgb(255, 255, 255);
+    border: 5px;
+    display:block;
+    float: left;
+    width: 40%;
+    border-bottom: 0.1rem solid transparent;
+    transition: all 0.3s;
+    text-decoration-style:solid;
+    box-sizing: content-box;
+    
+}
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+}
 
+button{
 *,
 *::before,
 *::after {
@@ -80,10 +99,15 @@
 
 .timer_button {
     appearance: none;
-    border: 1px;
+    border: 0;
     border-radius: 5px;
     background: #4676D7;
     color: #fff;
+
+    padding: 5px;
+    font-size: 16px; 
+    width: auto;
+
     padding: 8px 16px;
     font-size: 16px;
     min-width: 100px;
@@ -130,18 +154,25 @@ input[type="text"] {
     width: 50%;
     height: calc(2.25rem + 2px);
     padding: 0.375rem 0.75rem;
+
     font-family: inherit;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #bdbdbd;
-    border-radius: 5px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin: 0px;
+    background-origin: border-box;
+    margin-left: 10px;
+    min-width: initial;
+    text-align: center;
+    padding: 8px 5px 10px 5px;
 }
 
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
+  }
+.button--outline {
+    background: transparent;
+    color: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+=======
 .timer-span-stand-alone {
     background-color: var(--primary-color);
     color: var(--text-color);
@@ -157,4 +188,7 @@ input[type="text"] {
 .timer_input::placeholder {
     color: #212529;
     opacity: 0.4;
+
 }
+
+

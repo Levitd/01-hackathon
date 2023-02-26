@@ -38,11 +38,12 @@ export class TimerModule extends Module {
     createHTML(newform) {
         if (newform === 'new') {
             return `<form class="timer-block">
-            <div class="timer-1">
+            
             <span class="timer-span"></span>
-            </div>
+            
             <div class="timer-2">
-            <input name="name" class="timer_input" type="text" placeholder="Введите любое число" value="">
+            <input name="name" class="timer_input" type="number" placeholder="Введите любое число" value="10"
+            min="1" max="1500" autofocus>
             <button type="submit" class="timer_button">Отправить</button>
             </div>
             </form>`;
@@ -73,6 +74,13 @@ export class TimerModule extends Module {
 
             if (time === -1) {
                 clearInterval(timerInterval);
+
+//                divTimer.remove();
+                // Сообщение о завершении 
+//                let messageAsk = 'Отсчет завершен'
+//                customMessage.createBlockMessage(messageAsk);
+//                customMessage.deleteBlock(3000);
+
                 if (newform === 'new') {
                     let divTimer = document.querySelector('.timer-block');
                     divTimer?.remove();
