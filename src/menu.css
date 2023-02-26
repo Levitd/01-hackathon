@@ -69,7 +69,7 @@
 
 .hiding {
     opacity: 0;
-       transition: background-color ease-in-out .5s;
+    transition: all ease-in-out .5s;
 }
 
 *, *::before, *::after {
@@ -84,7 +84,9 @@
     padding: 8px 16px;
     font-size: 16px;
     min-width: 100px;
+
   }
+
 /* .timer_button:hover {
     background: #1d49aa;
 } */
@@ -99,15 +101,15 @@
 
 .timer-block {
     cursor: pointer;
-
     background-color: var(--primary-color);
     color: var(--text-color);
     border: none;
     padding: 5px 20px;
-    border-radius: 5px;
-  
+    border-radius: 5px;  
     font-size: 1.5rem;
     line-height: 2.5rem;
+    position:absolute;
+    top: 150px;
 }
 input[type="text"] {
     font-family: inherit; 
@@ -135,4 +137,4 @@ input[type="text"] {
 .timer_input::placeholder {
     color: #212529;
     opacity: 0.4;
-    }
+}
