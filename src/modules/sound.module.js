@@ -1,16 +1,25 @@
 import { Module } from '../core/module'
+import { disableItemMenu } from '../utils';
+
 
 export class SoundModule extends Module{
-    trigger(){
+    constructor(type, text) {
+        super(type, text);
+        this.type = type;
+    }
+    trigger(){ 
+        disableItemMenu(this.type);
+
         this.createElementSound();
         this.randomSound();
-        // this.deleteElement();
+        this.deleteElement();    
+
     }
     createElementSound(){
         let figure = document.createElement('figure');
         let audio = document.createElement('audio');
         audio.src = this.randomSound();
-        audio.controls;
+        audio.controls = 'true';
         audio.autoplay = 'true';
 
         figure.append(audio);
@@ -28,8 +37,13 @@ export class SoundModule extends Module{
         return arr[rand];
     }
     deleteElement(){
-        let element = document.querySelector('figure');
-        element.remove();
+        let element = document.querySelector('audio');
+        element.addEventListener('ended', (event)=>{
+            let a = document.querySelector('figure');
+            disableItemMenu(this.type);
+
+            a.remove()
+        });
     }       
     
 }
