@@ -32,7 +32,7 @@ contextMenu.add(timerModule);
 const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
 contextMenu.add(customMessage);
 
-const soundModule = new TimerModule('soundModule', 'Случайный звук',);
+const soundModule = new SoundModule('soundModule', 'Случайный звук',);
 contextMenu.add(soundModule);
 
 const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');

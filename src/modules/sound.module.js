@@ -1,21 +1,35 @@
 import { Module } from '../core/module'
 
-export class Sound extends Module{
+export class SoundModule extends Module{
     trigger(){
         this.createElementSound();
         this.randomSound();
+        // this.deleteElement();
     }
-    //<button onclick="randomSound()">Random Sound</button>
     createElementSound(){
-        let button = document.createElement('button');
-        button.onclick = 'randomSound()';
-        button.textContent = 'Random Sound'
-        document.body.append(button)
+        let figure = document.createElement('figure');
+        let audio = document.createElement('audio');
+        audio.src = this.randomSound();
+        audio.controls;
+        audio.autoplay = 'true';
+
+        figure.append(audio);
+        document.body.append(figure);
     }
-    randomSound = function() {
-        let arrSound = ['1.mp3', '2.mp3', '3.mp3', '4.mp3'];
-        let randomSound = Math.floor(Math.random() * arrSound.length);
-        return new Audio(arrSound[randomSound]);
+    randomSound() {
+        let arr = [
+            'https://zvukogram.com/mp3/p5/3467/korotkaya-melodiya-veseloe-otkryitie-animirovannyiy-fonovyiy-zvuk-igryi-40627.mp3',
+            'https://zvukogram.com/mp3/cats/1194/pornhub-intro-zastavka-dlya-video.mp3',
+            'https://zvukogram.com/mp3/p5/3551/ritmichnaya-melodiya-vibriruyuschiy-byistryiy-dostupnyiy-elektronnyiy-korotkiy-saundtrek-38584.mp3',
+            'https://zvukogram.com/mp3/cats/1036/korotkaya-melodiya-na-balalayke.mp3',
+        ]
+
+        let rand = Math.floor(Math.random() * arr.length);
+        return arr[rand];
+    }
+    deleteElement(){
+        let element = document.querySelector('figure');
+        element.remove();
     }       
     
 }
