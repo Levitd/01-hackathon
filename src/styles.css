@@ -20,7 +20,6 @@ body {
     width: 225px;
     background: #1b1a1a;
     border-radius: 5px;
-    /* display: none; */
     list-style: none;
 }
 
@@ -100,8 +99,6 @@ body {
     min-width: 200px;
     max-width: 400px;
     min-height: 50px;
-    /* position: absolute;
-    top: 150px; */
     background-color: #1b1a1a;
     color: #eee;
     padding: 30px;
