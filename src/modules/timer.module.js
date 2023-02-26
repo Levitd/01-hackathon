@@ -1,11 +1,17 @@
 import { Module } from '../core/module'
 import { CustomMessage } from './message.module';
+import { disableItemMenu } from '../utils';
 
 const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
 
 
 export class TimerModule extends Module {
+    constructor(type, text) {
+        super(type, text);
+        this.type = type;
+    }
     trigger() {
+        disableItemMenu(this.type);
         this.createElement('new');
     }
 
@@ -74,6 +80,7 @@ export class TimerModule extends Module {
                     let messageAsk = 'Отсчет завершен'
                     customMessage.createBlockMessage(messageAsk);
                     customMessage.deleteBlock(5000);
+                    disableItemMenu(this.type);
                 } else {
                     span.remove();
                 }
