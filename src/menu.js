@@ -7,6 +7,14 @@ export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector);
 
+        document.body.addEventListener('click', event => {
+            this.countClick('left', event);
+            if (event.target.offsetParent === this.el) {
+
+                this.click(event);
+                this.close();
+            }
+        })
         this.selector = selector;
         this.root = document.querySelector(this.selector);
 

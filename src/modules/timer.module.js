@@ -1,28 +1,34 @@
 import { Module } from '../core/module'
 import { CustomMessage } from './message.module';
+import { disableItemMenu } from '../utils';
 
 const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
 
 
 export class TimerModule extends Module {
+    constructor(type, text) {
+        super(type, text);
+        this.type = type;
+    }
     trigger() {
+        disableItemMenu(this.type);
         this.createElement('new');
     }
 
     createElement(newform) {
-        let body = document.querySelector('body');
-        let element = this.createHTML(newform);
+        const body = document.querySelector('body');
+        const element = this.createHTML(newform);
 
         body.insertAdjacentHTML("beforeend", element);
         if (newform === 'new') {
             body.addEventListener('submit', (event) => {
                 event.preventDefault();
-                let input = document.querySelector('.timer_input')
+                const input = document.querySelector('.timer_input')
                 if (input !== '') {
                     const valueInput = Number(input?.value);
                     if (valueInput > 0 && Number.isInteger(valueInput) == true) {
 
-                        this.startTime(valueInput);
+                        this.startTime(valueInput, newform);
                     }
                 }
 
@@ -54,23 +60,38 @@ export class TimerModule extends Module {
         }
         return `${minutes}:${seconds}`;
     }
-    startTime(time) {
-        let div2 = document.querySelector('.timer-2');
-        div2.remove();
+    startTime(time, newform) {
+        const div2 = document.querySelector('.timer-2');
+        div2?.remove();
+        const span = document.querySelector('.timer-span');
+        if (newform !== 'new')
+            span.classList.add('timer-span-stand-alone');
+        span.textContent = this.formatTime(time);
 
         let timerInterval = setInterval(() => {
             time -= 1;
-            let span = document.querySelector('.timer-span');
             span.textContent = this.formatTime(time);
 
             if (time === -1) {
-                let divTimer = document.querySelector('.timer-block');
                 clearInterval(timerInterval);
-                divTimer.remove();
+
+//                divTimer.remove();
                 // Сообщение о завершении 
-                let messageAsk = 'Отсчет завершен'
-                customMessage.createBlockMessage(messageAsk);
-                customMessage.deleteBlock(3000);
+//                let messageAsk = 'Отсчет завершен'
+//                customMessage.createBlockMessage(messageAsk);
+//                customMessage.deleteBlock(3000);
+
+                if (newform === 'new') {
+                    let divTimer = document.querySelector('.timer-block');
+                    divTimer?.remove();
+                    // Сообщение о завершении 
+                    let messageAsk = 'Отсчет завершен'
+                    customMessage.createBlockMessage(messageAsk);
+                    customMessage.deleteBlock(5000);
+                    disableItemMenu(this.type);
+                } else {
+                    span.remove();
+                }
             }
         }, 1000);
 

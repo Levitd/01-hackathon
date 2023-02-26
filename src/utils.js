@@ -22,3 +22,11 @@ export function setStorage(el, array) {
 export function getRGBColor() {
   return `${random(0, 255)},${random(0, 255)},${random(0, 255)}`;
 }
+export function disableItemMenu(item) {
+  const conteinerMenu = document.querySelector(`#menu`);
+  if (conteinerMenu) {
+    const menuItem = conteinerMenu.querySelector('.menu-item[data-type="' + item + '"]');
+    if (menuItem)
+      menuItem.classList.toggle('d-none');
+  }
+}
