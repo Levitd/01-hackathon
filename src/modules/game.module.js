@@ -3,7 +3,6 @@ import { getRGBColor } from '../utils'
 import { ClickAllModule } from './clickAll.module'
 
 const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');
-console.log(clickAllModule)
 
 export class ShapeGameModule extends Module {
     constructor(type, text) {
@@ -22,12 +21,12 @@ export class ShapeGameModule extends Module {
         document.body.append(block)
 
         document.querySelector('.shape-area').addEventListener('dragstart', e => {
-            const {target} = e
-            if(target.closest('.shape-area')) {
+            const { target } = e
+            if (target.closest('.shape-area')) {
                 target.classList.add('active');
                 setTimeout(() => {
                     target.classList.add('hide')
-                },0)
+                }, 0)
             }
         })
 
@@ -44,12 +43,12 @@ export class ShapeGameModule extends Module {
             const { target } = e
             let shape = document.querySelector('.active');
             const shapeClassname = shape.className.split(' ')[0]
-            if(shapeClassname === target.className) {
+            if (shapeClassname === target.className) {
                 target.append(shape);
                 target.style.backgroundColor = shape.style.backgroundColor
                 shape.classList.remove('active')
                 this.checkShapeArea()
-            }else {
+            } else {
                 return
             }
         })
@@ -70,11 +69,11 @@ export class ShapeGameModule extends Module {
         document.body.append(startMessage)
         setTimeout(() => {
             document.querySelector('.start-message').remove()
-        },5000)
+        }, 5000)
     }
 
     createPlaceholder() {
-        const shapesPlaceholder = [ 'oval', 'square','circle', 'rectangle', 'cylinder',]
+        const shapesPlaceholder = ['oval', 'square', 'circle', 'rectangle', 'cylinder',]
         const placeholders = document.createElement('div')
         placeholders.className = 'placeholders'
         shapesPlaceholder.forEach(shape => {
@@ -108,16 +107,16 @@ export class ShapeGameModule extends Module {
     clearArea() {
         const shapeArea = document.querySelector('.shape-area')
         const placeholder = document.querySelector('.placeholders')
-        if(shapeArea) shapeArea.remove()
-        if(placeholder) placeholder.remove()
+        if (shapeArea) shapeArea.remove()
+        if (placeholder) placeholder.remove()
     }
 
     checkShapeArea() {
         const shapeArea = document.querySelector('.shape-area')
-        if(shapeArea.childNodes.length === 0) {
+        if (shapeArea.childNodes.length === 0) {
             this.clearArea()
             this.endGame()
-        } 
+        }
     }
 
     dontMatch() {
@@ -134,6 +133,6 @@ export class ShapeGameModule extends Module {
         document.body.append(endMessage)
         setTimeout(() => {
             document.querySelector('.end-message').remove()
-        },3000)
+        }, 3000)
     }
 }
