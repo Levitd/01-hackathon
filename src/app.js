@@ -10,6 +10,7 @@ import { TimerModule } from './modules/timer.module';
 import { CustomMessage } from './modules/message.module';
 import { SoundModule } from './modules/sound.module';
 import { ClickAllModule } from './modules/clickAll.module';
+import { ShapeGameModule } from './modules/game.module'
 
 const contextMenu = new ContextMenu('.menu');
 
@@ -35,7 +36,7 @@ contextMenu.add(customMessage);
 const soundModule = new SoundModule('soundModule', 'Случайный звук',);
 contextMenu.add(soundModule);
 
-const gameModule = new SoundModule('gameModule', 'Сыграем в игру?',);
+const gameModule = new ShapeGameModule('gameModule', 'Сыграем в игру?',);
 contextMenu.add(gameModule);
 
 const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');
