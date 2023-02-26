@@ -1,14 +1,20 @@
 import { Module } from '../core/module'
 import { getRGBColor } from '../utils'
+import { ClickAllModule } from './clickAll.module'
+
+const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');
+console.log(clickAllModule)
 
 export class ShapeGameModule extends Module {
     constructor(type, text) {
         super(type, text)
-
-
     }
 
     trigger(e) {
+        const conteiner = document.querySelector('.clickAll-conteiner');
+        if (conteiner) {
+            clickAllModule.defaultText(document.querySelector('.menu-item[data-type="' + clickAllModule.type + '"]'), clickAllModule.text)
+        }
         this.clearArea()
         this.startGame()
         this.createShape()
@@ -68,7 +74,7 @@ export class ShapeGameModule extends Module {
     }
 
     createPlaceholder() {
-        const shapesPlaceholder = [ 'oval', 'rhombus', 'square','circle', 'rectangle', 'cylinder',]
+        const shapesPlaceholder = [ 'oval', 'square','circle', 'rectangle', 'cylinder',]
         const placeholders = document.createElement('div')
         placeholders.className = 'placeholders'
         shapesPlaceholder.forEach(shape => {
@@ -82,7 +88,7 @@ export class ShapeGameModule extends Module {
     }
 
     createShape() {
-        const shapes = ['square', 'circle', 'rhombus', 'cylinder', 'rectangle', 'oval']
+        const shapes = ['square', 'circle', 'cylinder', 'rectangle', 'oval']
         const shapesArea = document.createElement('div')
         shapesArea.className = 'shape-area'
         shapes.forEach(shape => {

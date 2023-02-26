@@ -102,7 +102,7 @@ export class ClickAllModule extends Module {
             conteiner.classList.add('hiding');
             setTimeout(() => {
                 conteiner.remove();
-            }, 1000);
+            }, 500);
         }
     }
 
