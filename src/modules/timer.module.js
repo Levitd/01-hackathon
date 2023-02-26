@@ -10,19 +10,19 @@ export class TimerModule extends Module {
     }
 
     createElement(newform) {
-        let body = document.querySelector('body');
-        let element = this.createHTML(newform);
+        const body = document.querySelector('body');
+        const element = this.createHTML(newform);
 
         body.insertAdjacentHTML("beforeend", element);
         if (newform === 'new') {
             body.addEventListener('submit', (event) => {
                 event.preventDefault();
-                let input = document.querySelector('.timer_input')
+                const input = document.querySelector('.timer_input')
                 if (input !== '') {
                     const valueInput = Number(input?.value);
                     if (valueInput > 0 && Number.isInteger(valueInput) == true) {
 
-                        this.startTime(valueInput);
+                        this.startTime(valueInput, newform);
                     }
                 }
 
@@ -53,23 +53,30 @@ export class TimerModule extends Module {
         }
         return `${minutes}:${seconds}`;
     }
-    startTime(time) {
-        let div2 = document.querySelector('.timer-2');
-        div2.remove();
+    startTime(time, newform) {
+        const div2 = document.querySelector('.timer-2');
+        div2?.remove();
+        const span = document.querySelector('.timer-span');
+        if (newform !== 'new')
+            span.classList.add('timer-span-stand-alone');
+        span.textContent = this.formatTime(time);
 
         let timerInterval = setInterval(() => {
             time -= 1;
-            let span = document.querySelector('.timer-span');
             span.textContent = this.formatTime(time);
 
             if (time === -1) {
-                let divTimer = document.querySelector('.timer-block');
                 clearInterval(timerInterval);
-                divTimer.remove();
-                // Сообщение о завершении 
-                let messageAsk = 'Отсчет завершен'
-                customMessage.createBlockMessage(messageAsk);
-                customMessage.deleteBlock(5000);
+                if (newform === 'new') {
+                    let divTimer = document.querySelector('.timer-block');
+                    divTimer?.remove();
+                    // Сообщение о завершении 
+                    let messageAsk = 'Отсчет завершен'
+                    customMessage.createBlockMessage(messageAsk);
+                    customMessage.deleteBlock(5000);
+                } else {
+                    span.remove();
+                }
             }
         }, 1000);
 
