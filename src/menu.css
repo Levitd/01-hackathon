@@ -51,7 +51,9 @@
     opacity: 0;
     transition: all ease-in-out .5s;
 }
-.timer-block{
+
+.timer-block,
+.timer-span-stand-alone {
     min-width: 200px;
     max-width: 300px;
     min-height: 50px;
@@ -66,7 +68,8 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
 }
-input{
+
+input {
     font-family: 'Roboto', sans-serif;
     color: #333;
     font-size: 20px;
@@ -75,28 +78,29 @@ input{
     border-radius: 0.3rem;
     background-color: rgb(255, 255, 255);
     border: 5px;
-    display:block;
+    display: block;
     float: left;
     width: 40%;
     border-bottom: 0.1rem solid transparent;
     transition: all 0.3s;
-    text-decoration-style:solid;
+    text-decoration-style: solid;
     box-sizing: content-box;
-    
+
 }
+
 .input:focus {
     outline: none;
     box-shadow: 0 0 0 4px #cbd6ee;
 }
 
-button{
+button {
     appearance: none;
     border: 0;
     border-radius: 5px;
     background: #4676D7;
     color: #fff;
     padding: 5px;
-    font-size: 16px; 
+    font-size: 16px;
     width: auto;
     font-family: inherit;
     margin: 0px;
@@ -105,14 +109,4 @@ button{
     min-width: initial;
     text-align: center;
     padding: 8px 5px 10px 5px;
-}
-
-.button:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px #cbd6ee;
-  }
-.button--outline {
-    background: transparent;
-    color: var(--color-brand-primary);
-    border-color: var(--color-brand-primary);
 }
