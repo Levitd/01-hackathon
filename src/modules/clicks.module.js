@@ -1,5 +1,8 @@
 import { Module } from '../core/module'
 import { numFormat } from '../utils';
+import { CustomMessage } from './message.module';
+
+const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
 //ToDo импорт сообщений, и потом в эти сообщения выводить 
 
 export class ClicksModule extends Module {
@@ -20,5 +23,7 @@ export class ClicksModule extends Module {
     }
     messageClick(text) {
         console.log(text);
+        customMessage.createBlockMessage(text);
+        customMessage.deleteBlock(5000);
     }
 }
