@@ -93,17 +93,20 @@ body {
     border-right: none;
     border-top: none;
     transform: rotate(45deg);
-  }
+}
 
 /* Custom message styles */
-.custom-block__message{
-    width: 300px;
-    height: 100px;
-    position:absolute;
+.custom-block__message {
+    min-width: 200px;
+    max-width: 400px;
+    min-height: 50px;
+    position: absolute;
     top: 150px;
-    background-color: #343434;
-    color:beige;
+    background-color: #1b1a1a;
+    color: #eee;
     padding: 30px;
     display: flex;
     justify-content: center;
+    border-radius: 5px;
+    transition: background-color ease-in-out .25s;
 }
