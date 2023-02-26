@@ -1,6 +1,8 @@
 import { Module } from '../core/module'
-import { createBlockMessage } from '../utils';
-import { deleteBlock } from '../utils';
+import { CustomMessage } from './message.module';
+
+const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
+
 
 export class TimerModule extends Module {
     trigger(){      
@@ -55,8 +57,8 @@ export class TimerModule extends Module {
                 divTimer.remove();
                 // Сообщение о завершении 
                 let messageAsk = 'Отсчет завершен'
-                createBlockMessage(messageAsk);
-                deleteBlock();
+                customMessage.createBlockMessage(messageAsk);
+                customMessage.deleteBlock(5000);
             }
         }, 1000);
 
