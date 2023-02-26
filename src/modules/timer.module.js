@@ -74,13 +74,6 @@ export class TimerModule extends Module {
 
             if (time === -1) {
                 clearInterval(timerInterval);
-
-//                divTimer.remove();
-                // Сообщение о завершении 
-//                let messageAsk = 'Отсчет завершен'
-//                customMessage.createBlockMessage(messageAsk);
-//                customMessage.deleteBlock(3000);
-
                 if (newform === 'new') {
                     let divTimer = document.querySelector('.timer-block');
                     divTimer?.remove();
