@@ -33,18 +33,15 @@ export class ClickAllModule extends Module {
 
     initObj(contextMenu) {
         this.getStorage();
-        //console.log(this.storage[0]['name'], this.storage[0]['count'], this.storage[0]['text']);
         if (!this.storage || !this.storage[0]['name'] || !this.storage[0]['count'] || !this.storage[0]['text']) {
             this.storage = [{ name: 'body', count: 0, text: 'BODY' }];
         }
         contextMenu.menuObjct.forEach(element => {
             const index = this.storage.findIndex(e => e.name === element['name']);
-            console.log(index, element);
             if (index < 0) {
                 this.storage.push({ name: element['name'], count: 0, text: element['text'] });
             }
         });
-        console.log(this.storage);
         this.setStorage();
     }
 
@@ -53,20 +50,19 @@ export class ClickAllModule extends Module {
         const countElementStatistic = this.storage.length;
         const winHeight = window.innerHeight;
 
-        console.log(countElementStatistic);
         const rootEl = document.createElement('div');
         rootEl.className = 'clickAll clickAll-conteiner';
         document.body.append(rootEl);
+        rootEl.style.gridTemplateColumns = `repeat(${countElementStatistic}, 1fr)`;
 
         let maxCount = 0;
-        console.log(this.storage);
         this.storage.forEach((el) => {
             const divEl = document.createElement('div');
             divEl.className = `item_clickAll graph_${el['name']}`;
             rootEl.append(divEl);
             maxCount = (maxCount < el['count']) ? el['count'] : maxCount;
         });
-        const scaleX = (this.winHeight - 100) / maxCount;
+        const scaleX = (this.winHeight - 250) / maxCount;
         setTimeout(() => {
             this.storage.forEach((el) => {
                 const divEl = document.querySelector(`.graph_${el['name']}`);
@@ -81,9 +77,7 @@ export class ClickAllModule extends Module {
         }, 10)
     }
     refresh() {
-        console.log("refresh");
         const clickConteiner = document.querySelector('.clickAll-conteiner');
-        console.log(clickConteiner);
         if (clickConteiner) {
             this.winHeight = window.innerHeight;
             this.storage = getStorage('countClickArrayAll');
@@ -93,11 +87,9 @@ export class ClickAllModule extends Module {
                 countEl.textContent = el['count'];
                 maxCount = (maxCount < el['count']) ? el['count'] : maxCount;
             });
-            console.log(maxCount, this.winHeight);
-            const scaleX = (this.winHeight - 100) / maxCount;
+            const scaleX = (this.winHeight - 250) / maxCount;
             this.storage.forEach((el) => {
                 const countEl = clickConteiner.querySelector(`.graph_${el['name']}`);
-                console.log(countEl, el['count'], scaleX);
                 countEl.style.height = `${el['count'] * scaleX}px`;
             });
         }
@@ -106,8 +98,12 @@ export class ClickAllModule extends Module {
     defaultText(elem, text) {
         elem.textContent = text;
         const conteiner = document.querySelector('.clickAll-conteiner');
-        if (conteiner)
-            conteiner.remove();
+        if (conteiner) {
+            conteiner.classList.add('hiding');
+            setTimeout(() => {
+                conteiner.remove();
+            }, 1000);
+        }
     }
 
 }

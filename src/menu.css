@@ -24,7 +24,7 @@
 
 .clickAll {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    /* grid-template-columns: repeat(7, 1fr); */
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
 }
@@ -65,4 +65,9 @@
         background-color .15s ease-in-out;
     margin-left: 5px;
     min-width: 30px;
+}
+
+.hiding {
+    opacity: 0;
+    transition: all ease-in-out .5s;
 }
