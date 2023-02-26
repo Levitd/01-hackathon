@@ -1,4 +1,6 @@
 import { Module } from '../core/module'
+import { createBlockMessage } from '../utils';
+import { deleteBlock } from '../utils';
 
 export class TimerModule extends Module {
     trigger(){      
@@ -11,7 +13,7 @@ export class TimerModule extends Module {
         <span class="timer-span"></span>
         </div>
         <div class="timer-2">
-        <input name="name" class="timer_input" type="text" placeholder="Введите любое число"  value="10"  >
+        <input name="name" class="timer_input" type="text" placeholder="Введите любое число" value="">
         <button type="submit" class="timer_button">Отправить</button>
         </div>
         </form>`
@@ -20,12 +22,14 @@ export class TimerModule extends Module {
     body.addEventListener('submit',(event) => {
         event.preventDefault();    
         let input = document.querySelector('.timer_input')
-        const valueInput = input.value;
-        console.log(event)
-        if(valueInput){
-            this.startTime(valueInput);
-            console.log(valueInput)
+        if(input !== ''){       
+            const valueInput = Number(input?.value);
+            if(valueInput > 0 && Number.isInteger(valueInput) == true){
+
+                this.startTime(valueInput);
+            }
         }
+
     })
     }
     formatTime(time) {
@@ -42,14 +46,17 @@ export class TimerModule extends Module {
 
         let timerInterval = setInterval(() => {
             time -= 1;
-            let span = document.querySelector('.timer-span')
+            let span = document.querySelector('.timer-span');
             span.textContent = this.formatTime(time);
         
             if(time === -1){
                 let divTimer = document.querySelector('.timer-block');
                 clearInterval(timerInterval);
                 divTimer.remove();
-                
+                // Сообщение о завершении 
+                let messageAsk = 'Отсчет завершен'
+                createBlockMessage(messageAsk);
+                deleteBlock();
             }
         }, 1000);
 

@@ -22,3 +22,18 @@ export function setStorage(el, array) {
 export function getRGBColor() {
   return `${random(0, 255)},${random(0, 255)},${random(0, 255)}`;
 }
+export function createBlockMessage(messageAsk){
+  const blockMessage = document.createElement('div');
+  const blockText = document.createElement('span');
+  blockMessage.className = 'custom-block__message';
+  blockText.className = 'custom-text__message';
+  blockText.textContent = messageAsk;
+  blockMessage.append(blockText);
+  return document.body.append(blockMessage);
+}
+export function deleteBlock(){
+  const blockMessage = document.querySelector('.custom-block__message')
+  setTimeout(() =>{
+      blockMessage.remove()
+  }, 3000);
+}
