@@ -35,6 +35,9 @@ contextMenu.add(customMessage);
 const soundModule = new SoundModule('soundModule', 'Случайный звук',);
 contextMenu.add(soundModule);
 
+const gameModule = new SoundModule('gameModule', 'Сыграем в игру?',);
+contextMenu.add(gameModule);
+
 const clickAllModule = new ClickAllModule('clickAllModule', `Отобразить статистику`, 'Убрать статистику');
 contextMenu.add(clickAllModule, clickAllModule.refresh);
 clickAllModule.initObj(contextMenu);
