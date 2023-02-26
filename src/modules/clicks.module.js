@@ -1,6 +1,7 @@
 import { Module } from '../core/module'
 import { numFormat } from '../utils';
 import { CustomMessage } from './message.module';
+import { TimerModule } from './timer.module';
 
 const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
 //ToDo импорт сообщений, и потом в эти сообщения выводить 
