@@ -69,5 +69,5 @@
 
 .hiding {
     opacity: 0;
-    transition: all ease-in-out .5s;
+    transition: background-color ease-in-out .5s;
 }
