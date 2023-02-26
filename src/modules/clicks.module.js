@@ -4,6 +4,7 @@ import { CustomMessage } from './message.module';
 import { TimerModule } from './timer.module';
 
 const customMessage = new CustomMessage('customMessage', 'Вызвать сообщение');
+const timerModule = new TimerModule('timerModule', 'Таймер отсчета',);
 //ToDo импорт сообщений, и потом в эти сообщения выводить 
 
 export class ClicksModule extends Module {
@@ -15,6 +16,8 @@ export class ClicksModule extends Module {
     }
     trigger(event) {
         localStorage.setItem(`countClickArray`, JSON.stringify([1, 0, 0]));
+        timerModule.createElement();
+        timerModule.startTime(this.timerinMiliSec / 1000);
         const setTtimeoutID = window.setTimeout(this.stopClick, this.timerinMiliSec, this.timerinMiliSec, this.messageClick);
     }
     stopClick(times, callback) {

@@ -72,9 +72,12 @@
     transition: all ease-in-out .5s;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-  }
+}
+
 .timer_button {
     appearance: none;
     border: 1px;
@@ -85,12 +88,12 @@
     font-size: 16px;
     min-width: 100px;
 
-  }
+}
 
 /* .timer_button:hover {
     background: #1d49aa;
 } */
-  
+
 /* .timer_button:focus {
     outline: none;
     box-shadow: 0 0 0 4px #cbd6ee;
@@ -98,6 +101,9 @@
 /* .timer-block {
     height: 44px;
 } */
+:root {
+    --text-color: black;
+}
 
 .timer-block {
     cursor: pointer;
@@ -105,18 +111,20 @@
     color: var(--text-color);
     border: none;
     padding: 5px 20px;
-    border-radius: 5px;  
+    border-radius: 5px;
     font-size: 1.5rem;
     line-height: 2.5rem;
-    position:absolute;
+    position: absolute;
     top: 150px;
 }
+
 input[type="text"] {
-    font-family: inherit; 
-    font-size: small; 
-    line-height: inherit; 
-    margin: 0; 
+    font-family: inherit;
+    font-size: small;
+    line-height: inherit;
+    margin: 0;
 }
+
 .timer_input {
     display: inline-block;
     width: 50%;
@@ -132,6 +140,18 @@ input[type="text"] {
     border: 1px solid #bdbdbd;
     border-radius: 5px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.timer-span-stand-alone {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    position: absolute;
+    top: 150px;
 }
 
 .timer_input::placeholder {
