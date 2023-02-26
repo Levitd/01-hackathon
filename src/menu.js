@@ -37,14 +37,11 @@ export class ContextMenu extends Menu {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
         const countItem = this.root.querySelectorAll('.menu-item').length;
-        console.log('ContextMenu', 'open', mouseX, mouseY, countItem);
 
         const winWidth = window.innerWidth;
         const winHeight = window.innerHeight;
-
-        const maxHeight = Math.max(this.root.offsetHeight, countItem * 25);// countItem * 50;
+        const maxHeight = Math.max(this.root.offsetHeight, countItem * 35);// countItem * 50;
         const maxWidth = Math.max(this.root.offsetWidth, 225);
-        console.log(maxWidth, maxHeight);
 
         this.root.style.left = (winWidth - mouseX >= maxWidth + 50) ? `${mouseX}px` : `${mouseX - maxWidth}px`;
         this.root.style.top = (winHeight - mouseY >= maxHeight + 50) ? `${mouseY}px` : `${mouseY - maxHeight}px`;
@@ -53,13 +50,11 @@ export class ContextMenu extends Menu {
     }
 
     close() {
-        console.log('ContextMenu', 'close');
         this.root.classList.add('d-none');
     }
 
     countClick(button, event) {
         const elementClick = event.target
-        console.log(elementClick);
         const countClickArrayAll = getStorage(`countClickArrayAll`);
         if (countClickArrayAll) {
             let index;
